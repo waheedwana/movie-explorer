@@ -96,9 +96,12 @@ Favorites are stored in memory and reset when the page is refreshed.
 * Loading and error handling
 * Responsive design
 
-## Live Demo
+## Live website
 
-Coming soon.
+movie-explorer-taupe-eight.vercel.app
+
+## GitHub
+waheedwana/movie-explorer
 
 ## Author
 
