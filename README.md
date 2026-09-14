@@ -1,75 +1,107 @@
-# React + TypeScript + Vite
+# Movie Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A movie discovery application built with React, TypeScript, and the OMDb API.
 
-Currently, two official plugins are available:
+Users can search for movies, view detailed information, browse featured films, and save favorites.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+* Search movies by title
+* View movie details
+* Browse featured movies
+* Add and remove favorites
+* Responsive design
+* Loading and error states
+* Reusable components
+* Client-side routing
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+* React
+* TypeScript
+* Vite
+* React Router
+* CSS
+* OMDb API
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Project Structure
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```text
+src/
+├── components/
+│   ├── EmptyState.tsx
+│   ├── ErrorMessage.tsx
+│   ├── Featured.tsx
+│   ├── Footer.tsx
+│   ├── Header.tsx
+│   ├── Loading.tsx
+│   ├── MovieCard.tsx
+│   ├── MovieGrid.tsx
+│   └── SearchBar.tsx
+├── context/
+│   └── FavoritesContext.tsx
+├── hooks/
+│   ├── useDebounce.ts
+│   └── useFetch.ts
+├── pages/
+│   ├── About.tsx
+│   ├── Favorites.tsx
+│   ├── Home.tsx
+│   ├── MovieDetails.tsx
+│   └── Movies.tsx
+├── services/
+│   └── movieApi.ts
+├── types/
+│   └── movie.ts
+├── App.tsx
+├── App.css
+├── config.ts
+├── index.css
+└── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+## API
+
+Movie data is provided by the OMDb API.
+
+## Favorites
+
+Favorites are managed using React Context and `useState`.
+
+Favorites are stored in memory and reset when the page is refreshed.
+
+## What I Practiced
+
+* React and TypeScript
+* React Router
+* API integration
+* Custom hooks
+* React Context
+* State management
+* Debounced search
+* Reusable components
+* Loading and error handling
+* Responsive design
+
+## Live Demo
+
+Coming soon.
+
+## Author
+
+Waheedullah
+
+Built as a frontend development practice project.
