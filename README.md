@@ -1,8 +1,8 @@
 # Movie Explorer
 
-A movie discovery application built with React, TypeScript, and the OMDb API.
+A movie discovery application built with React, TypeScript and the OMDb API.
 
-Users can search for movies, view detailed information, browse featured films, and save favorites.
+Users can search for movies, view detailed information, browse featured films and save favorites.
 
 ## Features
 
