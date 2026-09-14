@@ -75,7 +75,7 @@ npm run build
 
 ## API
 
-Movie data is provided by the OMDb API.
+Movie data is provided by the [OMDb API](https://www.omdbapi.com/).
 
 ## Favorites
 
