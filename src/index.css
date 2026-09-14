@@ -37,6 +37,22 @@ body {
 
 #root {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-main {
+  flex: 1 0 auto;
+}
+
+.favorites-page .results-area {
+  min-height: 380px;
+}
+
+.favorites-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
 }
 
 .container {

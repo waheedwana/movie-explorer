@@ -12,13 +12,15 @@ function App() {
     <FavoritesProvider>
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/movies/:id" element={<MovieDetails />} />
-        </Routes>
+        <main className="site-main">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/movies" element={<Movies />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/movies/:id" element={<MovieDetails />} />
+          </Routes>
+        </main>
       </BrowserRouter>
       <Footer />
     </FavoritesProvider>
