@@ -41,6 +41,10 @@ const FEATURED_IDS = [
   "tt2582802",
   "tt2380307",
   "tt0910970",
+  "tt7286456",
+  "tt4154796",
+  "tt0073486",
+  "tt0110413",
 ];
 
 function Featured() {
