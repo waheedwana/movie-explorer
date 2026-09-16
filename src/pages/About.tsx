@@ -1,14 +1,19 @@
+import { useScrollReveal } from "../animations";
+
 export function About() {
+  const headerRef = useScrollReveal<HTMLDivElement>();
+  const cardRef = useScrollReveal<HTMLDivElement>({ delay: 80 });
+
   return (
     <section className="page">
       <div className="container narrow">
-        <div className="page-header">
+        <div ref={headerRef} className="page-header">
           <span className="eyebrow">About</span>
           <h1>About</h1>
           <p>Learn how Movie works.</p>
         </div>
 
-        <div className="about-card">
+        <div ref={cardRef} className="about-card">
           <h2>What is Movie Explorer?</h2>
           <p>
             Movie Explorer is a portfolio project built to demonstrate modern

@@ -6,6 +6,7 @@ import { Loading } from "../components/Loading";
 import { ErrorMessage } from "../components/ErrorMessage";
 import type { MovieDetail, MovieType } from "../types/movie";
 import { useFavorites } from "../context/FavoritesContext";
+import { useScrollReveal } from "../animations";
 
 const FALLBACK_POSTER = "https://via.placeholder.com/400x600?text=No+Image";
 
@@ -13,6 +14,7 @@ function MovieDetails() {
   const { id = "" } = useParams();
   const location = useLocation();
   const { toggleFavorite, isFavorite } = useFavorites();
+  const detailRef = useScrollReveal<HTMLDivElement>();
 
   const fetcher = useCallback(
     (signal: AbortSignal) => getMovieById(id, signal),
@@ -50,7 +52,7 @@ function MovieDetails() {
           ‹ Back to movies
         </Link>
 
-        <div className="detail">
+        <div ref={detailRef} className="detail">
           <div className="detail-poster">
             <img
               src={movie.Poster === "N/A" ? FALLBACK_POSTER : movie.Poster}

@@ -1,0 +1,34 @@
+.reveal {
+  --reveal-distance: 30px;
+  --reveal-duration: 800ms;
+  --reveal-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --reveal-delay: 0ms;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-distance), 0);
+  transition:
+    opacity var(--reveal-duration) var(--reveal-easing) var(--reveal-delay),
+    transform var(--reveal-duration) var(--reveal-easing) var(--reveal-delay);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (max-width: 760px) {
+  .reveal {
+    --reveal-distance: 20px;
+    --reveal-duration: 600ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}

@@ -1,9 +1,12 @@
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Featured from "../components/Featured";
+import { useScrollReveal } from "../animations";
 function Home() {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+  const heroRef = useScrollReveal<HTMLDivElement>();
+  const sectionRef = useScrollReveal<HTMLDivElement>({ delay: 80 });
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     navigate(`/movies?search=${query}`);
@@ -11,7 +14,7 @@ function Home() {
   return (
     <main>
       <section className="hero">
-        <div className="container hero-inner">
+        <div ref={heroRef} className="container hero-inner">
           <span className="eyebrow">A curated catalogue</span>
           <h1 className="headline">Find your next favourite film.</h1>
           <p className="hero-subtitle">
@@ -33,7 +36,7 @@ function Home() {
         </div>
       </section>
       <section className="container section">
-        <div className="section-header">
+        <div ref={sectionRef} className="section-header">
           <span className="eyebrow">Films too rare</span>
           <h2 className="section-title">
             A collection of films worth remembering.

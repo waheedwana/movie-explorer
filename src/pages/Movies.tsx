@@ -9,9 +9,12 @@ import { EmptyState } from "../components/EmptyState";
 import { ErrorMessage } from "../components/ErrorMessage";
 import { Loading } from "../components/Loading";
 import MovieGrid from "../components/MovieGrid";
+import { useScrollReveal } from "../animations";
 
 const PAGE_SIZE = 10;
 function Movies() {
+  const headerRef = useScrollReveal<HTMLDivElement>();
+  const resultsRef = useScrollReveal<HTMLDivElement>({ delay: 80 });
   const [searchParams, setSearchParams] = useSearchParams();
   const searchFromUrl = searchParams.get("search") ?? "";
   const [input, setInput] = useState(searchFromUrl);
@@ -72,7 +75,7 @@ function Movies() {
   return (
     <section className="page">
       <div className="container">
-        <div className="page-header">
+        <div ref={headerRef} className="page-header">
           <span className="eyebrow">The catalogue</span>
           <h1>Movies</h1>
           <p>Search across a hand-picked collection of essential cinema.</p>
@@ -85,7 +88,7 @@ function Movies() {
           disabled={loading}
         />
 
-        <div className="results-area">
+        <div ref={resultsRef} className="results-area">
           {query === "" ? (
             <EmptyState
               title="Start Searching"
