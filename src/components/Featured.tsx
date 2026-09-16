@@ -1,7 +1,9 @@
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { getMovieById } from "../services/movieApi";
 import useFetch from "../hooks/useFetch";
+import { useInfiniteMovies } from "../hooks/useInfiniteMovies";
 import MovieCard from "./MovieCard";
+import type { MovieDetail, MovieType } from "../types/movie";
 const FEATURED_IDS = [
   "tt1228705",
   "tt1300854",
@@ -47,34 +49,51 @@ const FEATURED_IDS = [
   "tt0110413",
 ];
 
+function toMovie(movie: MovieDetail): MovieType {
+  return {
+    id: movie.imdbID,
+    title: movie.Title,
+    year: movie.Year,
+    poster: movie.Poster,
+  };
+}
+
 function Featured() {
   const fetchFeaturedMovies = useCallback((signal: AbortSignal) => {
     return Promise.all(FEATURED_IDS.map((id) => getMovieById(id, signal)));
   }, []);
   const { data, loading, error } = useFetch(fetchFeaturedMovies);
+
+  const featured = useMemo(() => data?.map(toMovie) ?? [], [data]);
+  const featuredIds = useMemo(
+    () => featured.map((movie) => movie.id),
+    [featured],
+  );
+  const featuredReady = !loading && !error && data != null;
+
+  const {
+    movies: moreMovies,
+    loading: loadingMore,
+    error: moreError,
+  } = useInfiniteMovies(featuredIds, featuredReady);
+
   if (loading) {
     return <p className="featured-status">Loading...</p>;
   }
   if (error) {
     return <p className="featured-status">{error}</p>;
   }
-  if (!data) {
-    return null;
-  }
-  const movies = data.map((movie) => {
-    return {
-      id: movie.imdbID,
-      title: movie.Title,
-      year: movie.Year,
-      poster: movie.Poster,
-    };
-  });
 
   return (
     <>
-      {movies.map((movie) => (
+      {featured.map((movie) => (
         <MovieCard key={movie.id} {...movie} />
       ))}
+      {moreMovies.map((movie) => (
+        <MovieCard key={movie.id} {...movie} />
+      ))}
+      {loadingMore && <p className="featured-status">Loading more...</p>}
+      {moreError && <p className="featured-status">{moreError}</p>}
     </>
   );
 }
