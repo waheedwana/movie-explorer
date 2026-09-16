@@ -18,8 +18,13 @@ function Home() {
           <span className="eyebrow">A curated catalogue</span>
           <h1 className="headline">Find your next favourite film.</h1>
           <p className="hero-subtitle">
-            A home for meaningful movies. We gather timeless silent films and
-            modern masterpieces, keeping only what is beautiful to watch.
+            <span className="hero-subtitle-full">
+              A home for meaningful movies. We gather timeless silent films and
+              modern masterpieces, keeping only what is beautiful to watch.
+            </span>
+            <span className="hero-subtitle-compact">
+              Timeless classics and modern masterpieces, curated with care.
+            </span>
           </p>
 
           <form className="hero-search" onSubmit={handleSubmit}>
